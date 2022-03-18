@@ -1,0 +1,122 @@
+import java.util.HashMap;
+import java.util.TreeSet;
+
+public class Employee implements Comparable<Employee>{
+	
+	public Employee(int empId, String fName, String lName, String department) {
+		this.empId = empId;
+		this.fName = fName;
+		this.lName = lName;
+		this.department = department;
+	}
+	
+	int empId;
+	String fName;
+	String lName;
+	String department;
+	
+	
+	
+	public int getEmpId() {
+		return empId;
+	}
+
+
+
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+
+
+
+	public String getfName() {
+		return fName;
+	}
+
+
+
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+
+
+	public String getlName() {
+		return lName;
+	}
+
+
+
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+
+
+
+	public String getDepartment() {
+		return department;
+	}
+
+
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	
+	
+
+
+
+	@Override
+	public String toString() {
+		return "Employee [Id: " + empId + ", First Name: " + fName + ", Last Name: " + lName + ", Department: " + department
+				+ "]";
+	}
+
+
+
+	public static void main(String[] args) {
+		
+		Employee e1 = new Employee(101, "Sam", "Wilkins", "Physics");
+		Employee e2 = new Employee(102, "Drake", "Long", "Engineering");
+		Employee e3 = new Employee(104, "Harry", "King", "Chemistry");
+		Employee e4 = new Employee(106, "Penny", "Shaw", "Biology");
+		
+		HashMap<String, Employee> emp = new HashMap<>();
+		
+		emp.put(e1.fName, e1);
+		emp.put(e2.fName, e2);
+		emp.put(e3.fName, e3);
+		emp.put(e4.fName, e4);
+		
+//		System.out.println(emp);
+		
+		TreeSet<String> ts = new TreeSet<>();
+		ts.add(e1.fName);
+		ts.add(e2.fName);
+		ts.add(e3.fName);
+		ts.add(e4.fName);
+		
+//		System.out.println(ts);
+		
+		int n = ts.size();
+		String arr[] = new String[n];
+		
+		arr = ts.toArray(arr);
+		
+		for(int i = 0; i < n; i++) {
+			System.out.println(emp.get(arr[i]));
+		}
+		
+	}
+
+
+
+	@Override
+	public int compareTo(Employee e) {
+		String s1 = this.getfName();
+		String s2 = e.getfName();
+		return s1.compareTo(s2);
+	}
+
+}
